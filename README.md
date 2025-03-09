@@ -67,4 +67,9 @@ Berikut adalah struktur direktori proyek ini:
 ├── requirements.txt           # Daftar dependensi Python
 ├── README.md                  # Dokumentasi proyek ini
 ```
----
+
+## Deployment
+Saya telah melakukan deploy ke **Streamlit Cloud**, Klik link berikut untuk melihat hasilnya :
+[data analysis zacky](https://share.streamlit.io/)
+
+Terima kasih
