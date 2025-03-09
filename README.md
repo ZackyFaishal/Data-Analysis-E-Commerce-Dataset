@@ -15,8 +15,7 @@ Dashboard ini membantu dalam memahami pola transaksi, preferensi pelanggan, sert
 ### 1. Clone Repository
 Jika proyek ini di-host di GitHub, Anda dapat meng-clone-nya dengan perintah berikut:
 ```bash
-git clone <repository_url>
-cd <repository_folder>
+git clone https://github.com/ZackyFaishal/Data-Analysis-E-Commerce-Dataset.git
 ```
 
 ### 2. Buat Virtual Environment (Opsional)
@@ -42,7 +41,7 @@ pip install streamlit pandas matplotlib seaborn
 ## Menjalankan Dashboard
 Setelah instalasi berhasil, jalankan dashboard dengan perintah berikut:
 ```bash
-streamlit run app.py
+streamlit run dashboard/dashboard.py
 ```
 Setelah dijalankan, Streamlit akan otomatis membuka browser pada `http://localhost:8501/`, dan Anda dapat mulai menggunakan dashboard.
 
@@ -68,13 +67,4 @@ Berikut adalah struktur direktori proyek ini:
 ├── requirements.txt           # Daftar dependensi Python
 ├── README.md                  # Dokumentasi proyek ini
 ```
-
----
-
-## Deployment
-Hasil Deployment Streamlit dapat dibuka melalui link berikut 
-1. Upload proyek ke **GitHub** atau **GitLab**
-2. Masuk ke [Streamlit Cloud](https://share.streamlit.io/)
-3. Hubungkan repository Anda, pilih `app.py`, lalu deploy!
-
 ---
