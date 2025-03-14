@@ -70,6 +70,6 @@ Berikut adalah struktur direktori proyek ini:
 
 ## Deployment
 Saya telah melakukan deploy ke **Streamlit Cloud**, Klik link berikut untuk melihat hasilnya :
-[data analysis zacky](https://share.streamlit.io/)
+[data analysis zacky](https://zacky-data-analysis-e-commerce.streamlit.app)
 
 Terima kasih
