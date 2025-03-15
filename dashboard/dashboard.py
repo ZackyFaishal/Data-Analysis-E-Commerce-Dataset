@@ -78,10 +78,11 @@ elif option == "Kategori Produk Terlaris":
     plt.title("10 Kategori Produk Terlaris")
     st.pyplot(plt)
 
-# Segmentasi Pelanggan (RFM Analysis)
 elif option == "Segmentasi Pelanggan (RFM Analysis)":
     st.subheader("Segmentasi Pelanggan (RFM Analysis)")
     latest_date = df_filtered['order_purchase_timestamp'].max()
+    
+    # Hitung RFM
     rfm = df_filtered.groupby('customer_unique_id').agg({
         'order_purchase_timestamp': lambda x: (latest_date - x.max()).days,
         'order_id': 'count',
@@ -92,18 +93,36 @@ elif option == "Segmentasi Pelanggan (RFM Analysis)":
         'price': 'Monetary'
     })
     
+    # Fungsi untuk mendeteksi outlier menggunakan IQR
+    def remove_outliers(df, column):
+        Q1 = df[column].quantile(0.25)
+        Q3 = df[column].quantile(0.75)
+        IQR = Q3 - Q1
+        lower_bound = Q1 - 1.5 * IQR
+        upper_bound = Q3 + 1.5 * IQR
+        return df[(df[column] >= lower_bound) & (df[column] <= upper_bound)]
+    
+    # Bersihkan outlier dari setiap kolom RFM
+    rfm_clean = remove_outliers(rfm, 'Recency')
+    rfm_clean = remove_outliers(rfm_clean, 'Frequency')
+    rfm_clean = remove_outliers(rfm_clean, 'Monetary')
+    
+    st.write(f"Jumlah pelanggan setelah outlier dihapus: {len(rfm_clean)}")
+    
+    # Buat figure dengan 3 subplot
     fig, axes = plt.subplots(1, 3, figsize=(20, 6))
 
-    sns.histplot(rfm['Recency'], bins=30, kde=True, ax=axes[0], color='blue')
+    sns.histplot(rfm_clean['Recency'], bins=30, kde=True, ax=axes[0], color='blue')
     axes[0].set_title("Distribusi Recency")
 
-    sns.histplot(rfm['Frequency'], bins=30, kde=True, ax=axes[1], color='green')
+    sns.histplot(rfm_clean['Frequency'], bins=30, kde=True, ax=axes[1], color='green')
     axes[1].set_title("Distribusi Frequency")
 
-    sns.histplot(rfm['Monetary'], bins=30, kde=True, ax=axes[2], color='red')
+    sns.histplot(rfm_clean['Monetary'], bins=30, kde=True, ax=axes[2], color='red')
     axes[2].set_title("Distribusi Monetary")
+    
+    st.pyplot(fig)
 
-    st.pyplot(fig)  # Pastikan gunakan fig, bukan plt
 
     
 # Distribusi Geografis Pelanggan
