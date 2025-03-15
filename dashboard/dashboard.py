@@ -92,18 +92,14 @@ elif option == "Segmentasi Pelanggan (RFM Analysis)":
         'price': 'Monetary'
     })
     
-    fig, axes = plt.subplots(1, 3, figsize=(20, 6))
-    sns.histplot(rfm['Recency'], bins=30, kde=True, ax=axes[0], color='blue')
-    axes[0].set_title("Distribusi Recency")
+    fig, ax = plt.subplots(figsize=(15, 7))  # Buat figure & axis secara eksplisit
+    monthly_orders.plot(kind='line', marker='o', color='b', ax=ax)
+    ax.set_xlabel("Bulan")
+    ax.set_ylabel("Jumlah Pesanan")
+    ax.set_title("Tren Jumlah Pesanan per Bulan")
+    plt.xticks(rotation=45)
+    st.pyplot(fig)  # Gunakan fig, bukan plt
     
-    sns.histplot(rfm['Frequency'], bins=30, kde=True, ax=axes[1], color='green')
-    axes[1].set_title("Distribusi Frequency")
-    
-    sns.histplot(rfm['Monetary'], bins=30, kde=True, ax=axes[2], color='red')
-    axes[2].set_title("Distribusi Monetary")
-    
-    st.pyplot(fig)
-
 # Distribusi Geografis Pelanggan
 elif option == "Distribusi Geografis Pelanggan":
     st.subheader("Distribusi Geografis Pelanggan")
