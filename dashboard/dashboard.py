@@ -9,15 +9,15 @@ st.set_page_config(layout="wide")
 
 # Sidebar dengan foto profil
 st.sidebar.header("Dashboard Analisis Data E-Commerce")
-st.sidebar.image("../data/profile.png")
+st.sidebar.image("./data/profile.png")
 # Load dataset
 @st.cache_data
 def load_data():
-    orders = pd.read_csv("../data/orders_dataset.csv")
-    order_items = pd.read_csv("../data/order_items_dataset.csv")
-    products = pd.read_csv("../data/products_dataset.csv")
-    customers = pd.read_csv("../data/customers_dataset.csv")
-    geolocation = pd.read_csv("../data/geolocation_dataset.csv")
+    orders = pd.read_csv("./data/orders_dataset.csv")
+    order_items = pd.read_csv("./data/order_items_dataset.csv")
+    products = pd.read_csv("./data/products_dataset.csv")
+    customers = pd.read_csv("./data/customers_dataset.csv")
+    geolocation = pd.read_csv("./data/geolocation_dataset.csv")
     
     # Merge datasets untuk analisis
     df = pd.merge(order_items, orders, on="order_id", how="inner")
