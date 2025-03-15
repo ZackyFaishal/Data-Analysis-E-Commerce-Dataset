@@ -9,7 +9,7 @@ st.set_page_config(layout="wide")
 
 # Sidebar dengan foto profil
 st.sidebar.header("Dashboard Analisis Data E-Commerce")
-st.sidebar.image("profile.png")
+st.sidebar.image("../data/profile.png")
 # Load dataset
 @st.cache_data
 def load_data():
