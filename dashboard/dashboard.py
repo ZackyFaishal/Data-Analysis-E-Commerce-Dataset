@@ -107,8 +107,6 @@ elif option == "Segmentasi Pelanggan (RFM Analysis)":
     rfm_clean = remove_outliers(rfm_clean, 'Frequency')
     rfm_clean = remove_outliers(rfm_clean, 'Monetary')
     
-    st.write(f"Jumlah pelanggan setelah outlier dihapus: {len(rfm_clean)}")
-    
     # Buat figure dengan 3 subplot
     fig, axes = plt.subplots(1, 3, figsize=(20, 6))
 
